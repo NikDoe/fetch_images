@@ -23,6 +23,7 @@ const GlobalContextProvider = ({ children }: Props) => {
 	const toggleTheme = () => {
 		const newIsDarkTheme = !isDarkTheme;
 		setIsDarkTheme(newIsDarkTheme);
+		document.body.classList.toggle('dark-theme', newIsDarkTheme);
 	};
     
 	return (
