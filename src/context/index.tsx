@@ -3,6 +3,8 @@ import { Dispatch, ReactNode, SetStateAction, createContext, useState } from 're
 type GlobalContextState = {
 	query: string;
     setQuery: Dispatch<SetStateAction<string>>;
+    isDarkTheme: boolean;
+    toggleTheme: () => void;
 };
 
 type Props = {
@@ -16,8 +18,15 @@ export const GlobalContext = createContext<GlobalContextState | undefined>(
 
 const GlobalContextProvider = ({ children }: Props) => {
 	const [query, setQuery] = useState('cat');
+	const [isDarkTheme, setIsDarkTheme] = useState(false);
+
+	const toggleTheme = () => {
+		const newIsDarkTheme = !isDarkTheme;
+		setIsDarkTheme(newIsDarkTheme);
+	};
+    
 	return (
-		<GlobalContext.Provider value={{ query, setQuery }}>
+		<GlobalContext.Provider value={{ query, setQuery, isDarkTheme, toggleTheme }}>
 			{children}
 		</GlobalContext.Provider>
 	);
