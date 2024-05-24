@@ -17,7 +17,7 @@ export const GlobalContext = createContext<GlobalContextState | undefined>(
 
 
 const GlobalContextProvider = ({ children }: Props) => {
-	const [query, setQuery] = useState('cat');
+	const [query, setQuery] = useState('office');
 	const [isDarkTheme, setIsDarkTheme] = useState(false);
 
 	const toggleTheme = () => {
