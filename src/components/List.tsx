@@ -10,7 +10,8 @@ type TPhoto = {
 	alt_description: string;
 }
 
-const URL = 'https://api.unsplash.com/search/photos?client_id=PEQYsHhWMFXVE-b6rxPZl2ELiZFl2Kqckfb2slAwnsE';
+const BASE_URL = 'https://api.unsplash.com/search/photos';
+const URL_WITH_KEY = `${BASE_URL}?client_id=${import.meta.env.VITE_USPLASH_API_ACCESS_KEY}`;
 
 function List() {
 	const { query } = useGlobalContext();
@@ -18,7 +19,7 @@ function List() {
 	const { data, isLoading, isError } = useQuery({
 		queryKey: ['photos', query],
 		queryFn: async () => {
-			const result = await axios.get(`${URL}&query=${query}`);
+			const result = await axios.get(`${URL_WITH_KEY}&query=${query}`);
 			return result.data;
 		}
 	});
